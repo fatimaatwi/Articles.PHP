@@ -1,0 +1,32 @@
+<?php
+
+include ("connection.php");
+
+$AID=$_GET['ID'];
+$query="SELECT*from table2 WHERE id='$AID'";
+$result=mysqli_query($con,$query);
+?>
+<center>
+<table width="80%">
+    <br><br><br>
+<?php
+if(mysqli_num_rows($result)>0){
+    while($row=mysqli_fetch_assoc($result)){
+       
+
+        echo"<tr><td><h1>".$row['title']."</h1></td></tr>
+            <tr><td>By ".$row['writer']."</td></tr>
+            <tr><td>".$row['category']."</td></tr>
+            <tr><td>".$row['date']."</td></tr>
+            <tr><td>".$row['article']."</td></tr>";
+
+        
+
+}
+}
+else
+echo "no recordes founds";
+
+?>
+</table>
+</center>
